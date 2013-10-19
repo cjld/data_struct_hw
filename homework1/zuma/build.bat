@@ -1,0 +1,1 @@
+C:\Qt\Qt5.1.0\Tools\mingw48_32\bin\g++ zuma.cpp -o zuma.exe -g
