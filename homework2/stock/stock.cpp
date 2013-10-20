@@ -53,13 +53,12 @@ int main() {
 	while (n--) {
 		int a=getInt(),b;
 		int deb=(l<=r ? q1[l] : 0);
-		fprintf(stderr, "%d\n", deb);
 		s+=a*(l<=r ? q1[l] : 0);
 		now+=a;
 		if (pre==' ') {
 			rr++;
 			b=getInt();
-			while (l<=r && q1[r]) r--;
+			while (l<=r && q1[r]<b) r--;
 			q1[++r]=b;
 			q2[r]=rr;
 		} else
