@@ -34,7 +34,8 @@ struct FN {
 int b[N];
 int n;
 ULL m,ans=-1ull;
-int fi,fn1,fn2;
+int fi;
+ULL fn1,fn2;
 
 void add(int i, ULL f, int fn) {a[i][++a[i][0].fn]=(FN){f, fn};}
 bool operator <(const FN &a, const FN &b) {return a.x<b.x;}
@@ -51,7 +52,7 @@ FN ef(FN *a, ULL x) {
 	return a[l];
 }
 
-void ckAns(int i, ULL pmul, ULL padd, int fn) {
+void ckAns(int i, ULL pmul, ULL padd, ULL fn) {
 	FN w = ef(a[i+1], pmul ? (m-padd-1)/pmul+1 : 0);
 	double cut=w.x*1.*pmul+padd;
 	if (cut>1.8e19) return;
@@ -71,7 +72,7 @@ void searchL(ULL p1, ULL p2, char opt, int fn, int i, int lim) {
 	searchL(nc, b[i+1], '*', (fn<<2)+1, i+1, lim);
 }
 
-void searchR(ULL pmul, ULL padd, ULL ps, ULL m10, char opt, int fn, int i, int lim) {
+void searchR(ULL pmul, ULL padd, ULL ps, ULL m10, char opt, ULL fn, int i, int lim) {
 	if (i<lim && opt!='#') {
 		ckAns(i,pmul,padd,fn);
 		return;
