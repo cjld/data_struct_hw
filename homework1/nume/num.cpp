@@ -26,6 +26,7 @@ void sort(T *a, int l, int r,bool(*comp)(const T &x,const T &y)=less<T>) {
 #define N 30
 #define M 600000
 typedef unsigned long long ULL;
+const double MaxLL = 1.8e19;
 
 struct FN {
 	ULL x;
@@ -53,7 +54,7 @@ FN ef(FN *a, ULL x) {
 }
 
 void ckAns(int i, ULL pmul, ULL padd, ULL fn) {
-	FN w = ef(a[i+1], pmul ? (m-padd-1)/pmul+1 : 0);
+	FN w = ef(a[i+1], (pmul && m>padd) ? (m-padd-1)/pmul+1 : 0);
 	double cut=w.x*1.*pmul+padd;
 	if (cut>1.8e19) return;
 	ULL s = w.x*pmul+padd;
@@ -77,10 +78,14 @@ void searchR(ULL pmul, ULL padd, ULL ps, ULL m10, char opt, ULL fn, int i, int l
 		ckAns(i,pmul,padd,fn);
 		return;
 	};
-	searchR(pmul, padd+ps*pmul, b[i], 10, '+', (fn<<2)+2, i-1, lim);
+	#define CK(x) (1.*x<MaxLL)
+	if (CK(ps*pmul))
+		searchR(pmul, padd+ps*pmul, b[i], 10, '+', (fn<<2)+2, i-1, lim);
 	if (i==0) return;
-	searchR(pmul, padd, ps+m10*b[i], m10*10, '#', fn<<2, i-1, lim);
-	searchR(pmul*ps, padd, b[i], 10, '*', (fn<<2)+1, i-1, lim);
+	if (CK(m10*b[i]))
+		searchR(pmul, padd, ps+m10*b[i], m10*10, '#', fn<<2, i-1, lim);
+	if (CK(ps*pmul))
+		searchR(pmul*ps, padd, b[i], 10, '*', (fn<<2)+1, i-1, lim);
 }
 
 int main() {
