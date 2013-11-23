@@ -50,7 +50,7 @@ namespace pro1 {
 
 namespace pro2 {
 
-    int z[N],a[N],b[N],o[N],f[N],fa[N];
+    int t,z[N],a[N],b[N],o[N],f[N],fa[N];
 
     void dfs(int i) {
         z[++t]=i;
@@ -81,7 +81,6 @@ namespace pro2 {
         f[n-1]=0;
         dfs(0);
         printf("%d\n",max(f[fa[0]],0));
-        //FOR(i,0,n-1) cerr("%d\n",f[fa[i]]);
     }
 }
 
