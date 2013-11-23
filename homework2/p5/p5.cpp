@@ -52,6 +52,7 @@ int main() {
 	q[1].x=x1, q[1].y=y1;
 	int ans=1<<30;
 	F(q[1])=w[4];
+	if (x1==x2 && y1==y2) {printf("%d",w[4]);return 0;}
 	while (l<=r) {
 		ST a=q[l++];
 		O(a)=0;
