@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <cmath>
+#include <ctime>
 
 using namespace std;
 
@@ -19,6 +20,19 @@ void link(int a,int b) {next[++t]=d[a],d[a]=t,p[t]=b;}
 #define FORE(i,j,k) for (int k=d[i],j=p[k];k;k=next[k],j=p[k])
 #define min(x,y) ((x)>(y)?(y):(x))
 #define max(x,y) ((x)<(y)?(y):(x))
+
+int getInt() {
+    int ans=0;
+    char pre = getchar();
+    while (!(pre>='0' && pre<='9')) pre = getchar();
+    while (1) {
+        if (pre>='0' && pre<='9')
+            ans=ans*10+(pre-'0');
+        else
+            return ans;
+        pre=getchar();
+    }
+}
 
 namespace pro1 {
 
@@ -87,14 +101,14 @@ namespace pro2 {
 int main() {
 	#ifdef FUCKLY
 	freopen("input.txt","r",stdin);
-	freopen("output.txt","w",stdout);
+//	freopen("output.txt","w",stdout);
 	#endif
     int n,m;
-    scanf("%d%d\n",&n,&m);
+    n=getInt(), m=getInt();
     gets(c);
     FOR(i,1,m) {
         int a,b;
-        scanf("%d%d",&a,&b);
+        a=getInt(), b=getInt();
         link(a,b);
     }
     pro1::solve(n);

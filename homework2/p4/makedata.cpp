@@ -10,11 +10,11 @@ using namespace std;
 int main() {
     freopen("input.txt","w",stdout);
     srand(time(0));
-    int n=499999,m=700000;
+    int n=9,m=13;
     cout<<n<<' '<<m<<endl;
     for (int i = 0; i < n; ++i) cout<< ((rand()%10)?'M':'m');
     cout<<endl;
-    for (int i = 0; i < n; i+=2) {
+    for (int i = 0; i < n-2; i+=2) {
         cout<<i<<' '<<i+2<<endl;
         m--;
     }
